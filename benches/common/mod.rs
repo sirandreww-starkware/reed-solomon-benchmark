@@ -33,20 +33,22 @@ impl BenchConfig {
 }
 
 /// All F values to test
-pub const F_VALUES: &[usize] = &[1, 2, 3, 4, 5, 10, 20, 30, 33];
+pub const F_VALUES: &[usize] = &[1, 2, 3, 4, 5, 10, 20, 30, 33, 66, 99];
 
 /// All data sizes to test (in bytes)
 pub const DATA_SIZES: &[usize] = &[
-    1024,              // 1KB
-    4 * 1024,          // 4KB
-    16 * 1024,         // 16KB
-    64 * 1024,         // 64KB
-    256 * 1024,        // 256KB
-    1024 * 1024,       // 1MB
-    4 * 1024 * 1024,   // 4MB
-    16 * 1024 * 1024,  // 16MB
-    64 * 1024 * 1024,  // 64MB
-    100 * 1024 * 1024, // 100MB
+    // 1024,              // 1KB
+    4 * 1024,        // 4KB
+    16 * 1024,       // 16KB
+    64 * 1024,       // 64KB
+    256 * 1024,      // 256KB
+    512 * 1024,      // 512KB
+    1024 * 1024,     // 1MB
+    2 * 1024 * 1024, // 2MB
+    4 * 1024 * 1024, // 4MB
+                     // 16 * 1024 * 1024,  // 16MB
+                     // 64 * 1024 * 1024,  // 64MB
+                     // 100 * 1024 * 1024, // 100MB
 ];
 
 /// Generate test data of specified size
