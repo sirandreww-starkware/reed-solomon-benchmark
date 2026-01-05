@@ -1,0 +1,306 @@
+decode                                              fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ decode_erasure                                                 │               │               │               │         │
+│  ├─ decode_1_missing                                            │               │               │               │         │
+│  │  ├─ BenchConfig { f: 1, data_size: 262144 }    74.5 µs       │ 408.3 µs      │ 75.23 µs      │ 82.48 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 524288 }    148.7 µs      │ 1.34 ms       │ 157 µs        │ 186.3 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 1048576 }   317.3 µs      │ 2.266 ms      │ 434.3 µs      │ 481.1 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 262144 }    70.68 µs      │ 289 µs        │ 70.99 µs      │ 74.52 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 524288 }    139.6 µs      │ 636.2 µs      │ 142.7 µs      │ 149.7 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 1048576 }   1.053 ms      │ 1.789 ms      │ 1.105 ms      │ 1.141 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 262144 }    66.69 µs      │ 347.6 µs      │ 67.44 µs      │ 72.14 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 524288 }    134.9 µs      │ 717.9 µs      │ 143.6 µs      │ 151.6 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 1048576 }   1.095 ms      │ 1.783 ms      │ 1.209 ms      │ 1.217 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 262144 }    67.55 µs      │ 386.1 µs      │ 69.33 µs      │ 74.13 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 524288 }    132.4 µs      │ 751.3 µs      │ 136.7 µs      │ 146 µs        │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 1048576 }   1.124 ms      │ 1.741 ms      │ 1.192 ms      │ 1.208 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 262144 }   67.47 µs      │ 393.9 µs      │ 69.77 µs      │ 74.19 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 524288 }   135.6 µs      │ 743.4 µs      │ 139.8 µs      │ 150.7 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 1048576 }  1.15 ms       │ 1.759 ms      │ 1.216 ms      │ 1.234 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 262144 }   69.18 µs      │ 353.7 µs      │ 72.32 µs      │ 76.44 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 524288 }   137.3 µs      │ 745.9 µs      │ 143.8 µs      │ 154.4 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 1048576 }  1.175 ms      │ 1.994 ms      │ 1.223 ms      │ 1.274 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 262144 }   69.9 µs       │ 397.8 µs      │ 72.58 µs      │ 78.11 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 524288 }   138.4 µs      │ 762.5 µs      │ 142.8 µs      │ 152.3 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 1048576 }  1.168 ms      │ 1.754 ms      │ 1.213 ms      │ 1.229 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 262144 }   80.51 µs      │ 536.9 µs      │ 82.19 µs      │ 89.33 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 524288 }   151.3 µs      │ 833 µs        │ 153.3 µs      │ 163.9 µs      │ 100     │ 100
+│  │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  1.217 ms      │ 1.942 ms      │ 1.274 ms      │ 1.289 ms      │ 100     │ 100
+│  ├─ decode_2f_missing                                           │               │               │               │         │
+│  │  ├─ BenchConfig { f: 1, data_size: 262144 }    129.5 µs      │ 322.4 µs      │ 133.3 µs      │ 136 µs        │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 524288 }    264.1 µs      │ 638.5 µs      │ 269.9 µs      │ 275.3 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 1048576 }   1.13 ms       │ 1.765 ms      │ 1.191 ms      │ 1.248 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 262144 }    240.6 µs      │ 504.5 µs      │ 249.6 µs      │ 255 µs        │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 524288 }    486 µs        │ 1.253 ms      │ 501.6 µs      │ 509.5 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 1048576 }   1.555 ms      │ 3.306 ms      │ 1.655 ms      │ 1.683 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 262144 }    347.2 µs      │ 615.2 µs      │ 350.4 µs      │ 353.9 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 524288 }    692.1 µs      │ 1.194 ms      │ 704.8 µs      │ 711.2 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 1048576 }   1.962 ms      │ 2.512 ms      │ 2.008 ms      │ 2.018 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 262144 }    555.1 µs      │ 875.9 µs      │ 571.7 µs      │ 575.9 µs      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 524288 }    1.137 ms      │ 1.756 ms      │ 1.142 ms      │ 1.153 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 1048576 }   2.87 ms       │ 3.487 ms      │ 2.933 ms      │ 2.959 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 262144 }   1.104 ms      │ 1.428 ms      │ 1.12 ms       │ 1.128 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 524288 }   2.236 ms      │ 2.783 ms      │ 2.245 ms      │ 2.255 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 1048576 }  5.081 ms      │ 6.811 ms      │ 5.167 ms      │ 5.233 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 262144 }   2.221 ms      │ 2.637 ms      │ 2.238 ms      │ 2.248 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 524288 }   4.432 ms      │ 5.015 ms      │ 4.452 ms      │ 4.462 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 1048576 }  9.534 ms      │ 17.2 ms       │ 9.723 ms      │ 10.05 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 262144 }   3.67 ms       │ 4.278 ms      │ 3.691 ms      │ 3.714 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 524288 }   7.361 ms      │ 10.02 ms      │ 7.792 ms      │ 7.919 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 1048576 }  15.4 ms       │ 27.79 ms      │ 16.35 ms      │ 16.67 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 262144 }   7.404 ms      │ 9.244 ms      │ 7.76 ms       │ 7.74 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 524288 }   14.64 ms      │ 17.65 ms      │ 15.23 ms      │ 15.22 ms      │ 100     │ 100
+│  │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  30.04 ms      │ 33.92 ms      │ 30.33 ms      │ 30.76 ms      │ 100     │ 100
+│  ╰─ decode_f_missing                                            │               │               │               │         │
+│     ├─ BenchConfig { f: 1, data_size: 262144 }    72.33 µs      │ 276.5 µs      │ 72.49 µs      │ 76.42 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 1, data_size: 524288 }    143.9 µs      │ 519.4 µs      │ 144.9 µs      │ 151.1 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 1, data_size: 1048576 }   1.223 ms      │ 3.659 ms      │ 1.315 ms      │ 1.38 ms       │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 262144 }    127.8 µs      │ 384.5 µs      │ 129.6 µs      │ 134.3 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 524288 }    244.8 µs      │ 778.1 µs      │ 256.7 µs      │ 265.5 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 1048576 }   1.247 ms      │ 1.688 ms      │ 1.29 ms       │ 1.325 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 262144 }    176.4 µs      │ 1.58 ms       │ 189.8 µs      │ 209.5 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 524288 }    373.2 µs      │ 959.4 µs      │ 379.8 µs      │ 388.3 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 1048576 }   1.531 ms      │ 4.391 ms      │ 1.581 ms      │ 1.653 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 262144 }    300.5 µs      │ 607.8 µs      │ 304.2 µs      │ 308.5 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 524288 }    579.3 µs      │ 1.194 ms      │ 594.2 µs      │ 603.6 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 1048576 }   2.02 ms       │ 4.44 ms       │ 2.215 ms      │ 2.365 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 262144 }   585.6 µs      │ 915.2 µs      │ 590.4 µs      │ 595.6 µs      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 524288 }   1.173 ms      │ 2.827 ms      │ 1.198 ms      │ 1.247 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 1048576 }  3.153 ms      │ 6.617 ms      │ 3.3 ms        │ 3.361 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 262144 }   1.118 ms      │ 1.462 ms      │ 1.122 ms      │ 1.128 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 524288 }   2.265 ms      │ 4.017 ms      │ 2.39 ms       │ 2.437 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 1048576 }  5.498 ms      │ 7.907 ms      │ 5.853 ms      │ 5.986 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 262144 }   1.847 ms      │ 3.582 ms      │ 1.915 ms      │ 1.939 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 524288 }   3.696 ms      │ 5.949 ms      │ 3.777 ms      │ 3.826 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 1048576 }  8.31 ms       │ 12.04 ms      │ 8.596 ms      │ 8.934 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 66, data_size: 262144 }   3.712 ms      │ 5.76 ms       │ 3.814 ms      │ 3.876 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 66, data_size: 524288 }   7.36 ms       │ 9.915 ms      │ 7.418 ms      │ 7.521 ms      │ 100     │ 100
+│     ╰─ BenchConfig { f: 66, data_size: 1048576 }  15.75 ms      │ 19.31 ms      │ 16 ms         │ 16.27 ms      │ 100     │ 100
+├─ decode_novelpoly                                               │               │               │               │         │
+│  ├─ decode_1_missing                                            │               │               │               │         │
+│  │  ├─ BenchConfig { f: 1, data_size: 262144 }    10.02 ms      │ 12.06 ms      │ 10.13 ms      │ 10.22 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 524288 }    19.21 ms      │ 22.11 ms      │ 19.55 ms      │ 19.72 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 1048576 }   38.95 ms      │ 43.38 ms      │ 40.95 ms      │ 40.66 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 262144 }    7.804 ms      │ 10.15 ms      │ 8.136 ms      │ 8.171 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 524288 }    14.99 ms      │ 17.66 ms      │ 15.41 ms      │ 15.5 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 1048576 }   30.29 ms      │ 37.57 ms      │ 32.75 ms      │ 32.96 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 262144 }    13.81 ms      │ 16.76 ms      │ 14.02 ms      │ 14.38 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 524288 }    26.39 ms      │ 32.36 ms      │ 28.95 ms      │ 28.97 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 1048576 }   54.34 ms      │ 67.99 ms      │ 58.27 ms      │ 58.68 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 262144 }    7.651 ms      │ 9.8 ms        │ 7.894 ms      │ 8.027 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 524288 }    15.19 ms      │ 19.63 ms      │ 16.39 ms      │ 16.55 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 1048576 }   28.93 ms      │ 37.92 ms      │ 31.65 ms      │ 31.98 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 262144 }   7.495 ms      │ 10.99 ms      │ 7.888 ms      │ 7.979 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 524288 }   14.92 ms      │ 24.4 ms       │ 17 ms         │ 16.96 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 1048576 }  30.39 ms      │ 39.53 ms      │ 34.48 ms      │ 34.6 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 262144 }   7.6 ms        │ 13.53 ms      │ 8.273 ms      │ 8.623 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 524288 }   15.63 ms      │ 20.36 ms      │ 16.96 ms      │ 17.06 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 1048576 }  29.97 ms      │ 38.44 ms      │ 33.65 ms      │ 33.4 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 262144 }   7.948 ms      │ 11.94 ms      │ 8.177 ms      │ 8.387 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 524288 }   15.81 ms      │ 19.48 ms      │ 17.24 ms      │ 17.18 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 1048576 }  31.7 ms       │ 45.88 ms      │ 35.31 ms      │ 35.65 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 262144 }   8.31 ms       │ 16.48 ms      │ 9.179 ms      │ 9.443 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 524288 }   16.48 ms      │ 20.33 ms      │ 16.72 ms      │ 16.98 ms      │ 100     │ 100
+│  │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  32.62 ms      │ 40.29 ms      │ 35.43 ms      │ 35.4 ms       │ 100     │ 100
+│  ├─ decode_2f_missing                                           │               │               │               │         │
+│  │  ├─ BenchConfig { f: 1, data_size: 262144 }    9.843 ms      │ 12.79 ms      │ 10.25 ms      │ 10.34 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 524288 }    19 ms         │ 23.44 ms      │ 19.74 ms      │ 19.74 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 1048576 }   38.25 ms      │ 47.41 ms      │ 40.33 ms      │ 40.65 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 262144 }    7.861 ms      │ 11.45 ms      │ 8.061 ms      │ 8.234 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 524288 }    14.34 ms      │ 16.94 ms      │ 15.11 ms      │ 15.15 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 1048576 }   28.07 ms      │ 32.17 ms      │ 29.34 ms      │ 29.43 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 262144 }    12.62 ms      │ 15.67 ms      │ 13.34 ms      │ 13.45 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 524288 }    24.66 ms      │ 28.69 ms      │ 25.11 ms      │ 25.41 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 1048576 }   48.57 ms      │ 63.18 ms      │ 49.82 ms      │ 50.73 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 262144 }    6.867 ms      │ 8.845 ms      │ 6.977 ms      │ 7.065 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 524288 }    13.05 ms      │ 17.82 ms      │ 13.3 ms       │ 13.43 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 1048576 }   25.39 ms      │ 29.92 ms      │ 25.68 ms      │ 25.93 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 262144 }   6.57 ms       │ 9.063 ms      │ 6.786 ms      │ 6.877 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 524288 }   12.68 ms      │ 26.29 ms      │ 12.93 ms      │ 13.46 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 1048576 }  24.77 ms      │ 33.32 ms      │ 24.95 ms      │ 25.24 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 262144 }   6.762 ms      │ 10.36 ms      │ 6.863 ms      │ 6.963 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 524288 }   12.76 ms      │ 15.42 ms      │ 13 ms         │ 13.2 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 1048576 }  24.84 ms      │ 30.68 ms      │ 25.37 ms      │ 25.67 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 262144 }   7.449 ms      │ 9.891 ms      │ 7.493 ms      │ 7.595 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 524288 }   14.13 ms      │ 17.42 ms      │ 14.25 ms      │ 14.42 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 1048576 }  27.49 ms      │ 32.35 ms      │ 27.73 ms      │ 28.02 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 262144 }   7.748 ms      │ 10 ms         │ 7.811 ms      │ 7.928 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 524288 }   14.74 ms      │ 17.81 ms      │ 14.98 ms      │ 15.25 ms      │ 100     │ 100
+│  │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  28.73 ms      │ 32.7 ms       │ 29.01 ms      │ 29.24 ms      │ 100     │ 100
+│  ╰─ decode_f_missing                                            │               │               │               │         │
+│     ├─ BenchConfig { f: 1, data_size: 262144 }    10.1 ms       │ 12 ms         │ 10.29 ms      │ 10.35 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 1, data_size: 524288 }    19.51 ms      │ 26.24 ms      │ 19.92 ms      │ 20.22 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 1, data_size: 1048576 }   39.21 ms      │ 54.59 ms      │ 40.59 ms      │ 41.52 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 262144 }    7.909 ms      │ 10.01 ms      │ 8.066 ms      │ 8.174 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 524288 }    15.1 ms       │ 17.66 ms      │ 15.42 ms      │ 15.62 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 1048576 }   30.27 ms      │ 38.01 ms      │ 30.63 ms      │ 31.11 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 262144 }    13.26 ms      │ 17.08 ms      │ 13.54 ms      │ 13.77 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 524288 }    25.69 ms      │ 31.36 ms      │ 26.3 ms       │ 26.75 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 1048576 }   51.66 ms      │ 63.17 ms      │ 53.26 ms      │ 54.28 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 262144 }    7.313 ms      │ 9.737 ms      │ 7.663 ms      │ 7.704 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 524288 }    14.02 ms      │ 17.13 ms      │ 14.39 ms      │ 14.57 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 1048576 }   28.03 ms      │ 32.61 ms      │ 28.51 ms      │ 28.78 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 262144 }   7.25 ms       │ 10.61 ms      │ 7.329 ms      │ 7.407 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 524288 }   13.65 ms      │ 22.01 ms      │ 13.84 ms      │ 14.34 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 1048576 }  27.51 ms      │ 36.23 ms      │ 28.35 ms      │ 28.66 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 262144 }   7.197 ms      │ 10.21 ms      │ 7.292 ms      │ 7.484 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 524288 }   13.6 ms       │ 19.15 ms      │ 13.87 ms      │ 14.18 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 1048576 }  27.38 ms      │ 35.32 ms      │ 27.89 ms      │ 28.4 ms       │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 262144 }   7.898 ms      │ 11.24 ms      │ 7.958 ms      │ 8.107 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 524288 }   15 ms         │ 19.78 ms      │ 15.56 ms      │ 15.98 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 1048576 }  30.05 ms      │ 35.42 ms      │ 31.27 ms      │ 31.7 ms       │ 100     │ 100
+│     ├─ BenchConfig { f: 66, data_size: 262144 }   8.069 ms      │ 11.59 ms      │ 8.167 ms      │ 8.326 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 66, data_size: 524288 }   15.41 ms      │ 19.32 ms      │ 15.61 ms      │ 15.86 ms      │ 100     │ 100
+│     ╰─ BenchConfig { f: 66, data_size: 1048576 }  30.87 ms      │ 35.85 ms      │ 31.73 ms      │ 32.13 ms      │ 100     │ 100
+├─ decode_rs16                                                    │               │               │               │         │
+│  ├─ decode_1_missing                                            │               │               │               │         │
+│  │  ├─ BenchConfig { f: 1, data_size: 262144 }    1.12 ms       │ 2.899 ms      │ 1.203 ms      │ 1.245 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 524288 }    1.747 ms      │ 4.901 ms      │ 1.803 ms      │ 1.919 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 1048576 }   3.041 ms      │ 4.946 ms      │ 3.236 ms      │ 3.35 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 262144 }    1.426 ms      │ 3.279 ms      │ 1.478 ms      │ 1.503 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 524288 }    2.407 ms      │ 3.98 ms       │ 2.486 ms      │ 2.529 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 1048576 }   4.108 ms      │ 6.492 ms      │ 4.215 ms      │ 4.318 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 262144 }    2.111 ms      │ 4.393 ms      │ 2.183 ms      │ 2.237 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 524288 }    3.571 ms      │ 6.135 ms      │ 3.751 ms      │ 3.835 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 1048576 }   6.685 ms      │ 14.67 ms      │ 7.064 ms      │ 7.468 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 262144 }    2.91 ms       │ 4.733 ms      │ 3.017 ms      │ 3.064 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 524288 }    5.193 ms      │ 7.513 ms      │ 5.387 ms      │ 5.46 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 1048576 }   10.1 ms       │ 15.58 ms      │ 10.51 ms      │ 10.68 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 262144 }   3.31 ms       │ 5.278 ms      │ 3.454 ms      │ 3.51 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 524288 }   6.014 ms      │ 8.882 ms      │ 6.189 ms      │ 6.28 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 1048576 }  11.73 ms      │ 16.02 ms      │ 12.24 ms      │ 12.52 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 262144 }   3.898 ms      │ 6.06 ms       │ 4.102 ms      │ 4.135 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 524288 }   7.291 ms      │ 9.554 ms      │ 7.443 ms      │ 7.537 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 1048576 }  14.14 ms      │ 19.97 ms      │ 14.45 ms      │ 14.71 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 262144 }   5.042 ms      │ 7.356 ms      │ 5.226 ms      │ 5.256 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 524288 }   9.47 ms       │ 12.96 ms      │ 9.889 ms      │ 9.988 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 1048576 }  18.75 ms      │ 23.81 ms      │ 19.21 ms      │ 19.57 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 262144 }   5.764 ms      │ 8.616 ms      │ 5.907 ms      │ 5.982 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 524288 }   10.85 ms      │ 15.51 ms      │ 11.22 ms      │ 11.43 ms      │ 100     │ 100
+│  │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  21.76 ms      │ 30.45 ms      │ 22.65 ms      │ 23.27 ms      │ 100     │ 100
+│  ├─ decode_2f_missing                                           │               │               │               │         │
+│  │  ├─ BenchConfig { f: 1, data_size: 262144 }    1.26 ms       │ 2.955 ms      │ 1.286 ms      │ 1.338 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 524288 }    1.98 ms       │ 4.548 ms      │ 2.075 ms      │ 2.126 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 1, data_size: 1048576 }   3.816 ms      │ 7.102 ms      │ 4.067 ms      │ 4.118 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 262144 }    1.647 ms      │ 3.197 ms      │ 1.741 ms      │ 1.77 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 524288 }    2.689 ms      │ 4.65 ms       │ 2.87 ms       │ 2.916 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 2, data_size: 1048576 }   4.81 ms       │ 7.963 ms      │ 4.986 ms      │ 5.112 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 262144 }    2.325 ms      │ 4.073 ms      │ 2.414 ms      │ 2.442 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 524288 }    3.954 ms      │ 6.197 ms      │ 4.081 ms      │ 4.259 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 3, data_size: 1048576 }   7.452 ms      │ 11.01 ms      │ 7.878 ms      │ 7.971 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 262144 }    3.099 ms      │ 4.958 ms      │ 3.213 ms      │ 3.234 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 524288 }    5.637 ms      │ 8.508 ms      │ 5.753 ms      │ 5.863 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 5, data_size: 1048576 }   11.04 ms      │ 20.28 ms      │ 11.64 ms      │ 12.18 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 262144 }   3.579 ms      │ 5.725 ms      │ 3.754 ms      │ 3.794 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 524288 }   6.503 ms      │ 8.959 ms      │ 6.713 ms      │ 6.826 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 10, data_size: 1048576 }  12.57 ms      │ 15.78 ms      │ 12.97 ms      │ 13.2 ms       │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 262144 }   4.133 ms      │ 6.474 ms      │ 4.3 ms        │ 4.343 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 524288 }   7.695 ms      │ 9.976 ms      │ 7.935 ms      │ 8.055 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 20, data_size: 1048576 }  15.12 ms      │ 18.69 ms      │ 15.49 ms      │ 15.74 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 262144 }   5.29 ms       │ 8.842 ms      │ 5.671 ms      │ 5.715 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 524288 }   9.988 ms      │ 13.39 ms      │ 10.18 ms      │ 10.35 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 33, data_size: 1048576 }  19.79 ms      │ 25.86 ms      │ 20.77 ms      │ 21.13 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 262144 }   5.991 ms      │ 8.248 ms      │ 6.107 ms      │ 6.187 ms      │ 100     │ 100
+│  │  ├─ BenchConfig { f: 66, data_size: 524288 }   11.31 ms      │ 14.62 ms      │ 11.85 ms      │ 12.13 ms      │ 100     │ 100
+│  │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  22.69 ms      │ 28.15 ms      │ 23.56 ms      │ 23.78 ms      │ 100     │ 100
+│  ╰─ decode_f_missing                                            │               │               │               │         │
+│     ├─ BenchConfig { f: 1, data_size: 262144 }    1.148 ms      │ 2.869 ms      │ 1.201 ms      │ 1.234 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 1, data_size: 524288 }    1.746 ms      │ 3.523 ms      │ 1.816 ms      │ 1.847 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 1, data_size: 1048576 }   3.096 ms      │ 5.961 ms      │ 3.27 ms       │ 3.312 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 262144 }    1.513 ms      │ 3.331 ms      │ 1.532 ms      │ 1.572 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 524288 }    2.563 ms      │ 3.013 ms      │ 2.662 ms      │ 2.678 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 2, data_size: 1048576 }   4.383 ms      │ 7.481 ms      │ 4.671 ms      │ 4.774 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 262144 }    2.205 ms      │ 3.988 ms      │ 2.284 ms      │ 2.328 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 524288 }    3.783 ms      │ 6.098 ms      │ 3.889 ms      │ 3.943 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 3, data_size: 1048576 }   7.073 ms      │ 9.635 ms      │ 7.353 ms      │ 7.493 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 262144 }    3.001 ms      │ 4.881 ms      │ 3.122 ms      │ 3.158 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 524288 }    5.418 ms      │ 8.706 ms      │ 5.525 ms      │ 5.64 ms       │ 100     │ 100
+│     ├─ BenchConfig { f: 5, data_size: 1048576 }   10.53 ms      │ 14.95 ms      │ 10.76 ms      │ 11.09 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 262144 }   3.405 ms      │ 5.624 ms      │ 3.484 ms      │ 3.6 ms        │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 524288 }   6.213 ms      │ 8.946 ms      │ 6.321 ms      │ 6.454 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 10, data_size: 1048576 }  12.27 ms      │ 18.43 ms      │ 12.58 ms      │ 12.84 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 262144 }   4.023 ms      │ 5.935 ms      │ 4.126 ms      │ 4.193 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 524288 }   7.542 ms      │ 11 ms         │ 7.774 ms      │ 7.889 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 20, data_size: 1048576 }  14.64 ms      │ 21.06 ms      │ 14.95 ms      │ 15.32 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 262144 }   5.153 ms      │ 7.326 ms      │ 5.388 ms      │ 5.434 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 524288 }   9.729 ms      │ 12.66 ms      │ 10.14 ms      │ 10.3 ms       │ 100     │ 100
+│     ├─ BenchConfig { f: 33, data_size: 1048576 }  19.23 ms      │ 29.53 ms      │ 20.35 ms      │ 21.12 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 66, data_size: 262144 }   5.903 ms      │ 8.425 ms      │ 6.214 ms      │ 6.353 ms      │ 100     │ 100
+│     ├─ BenchConfig { f: 66, data_size: 524288 }   11.15 ms      │ 14.6 ms       │ 11.98 ms      │ 12.03 ms      │ 100     │ 100
+│     ╰─ BenchConfig { f: 66, data_size: 1048576 }  22.15 ms      │ 26.43 ms      │ 22.69 ms      │ 22.96 ms      │ 100     │ 100
+╰─ decode_simd                                                    │               │               │               │         │
+   ├─ decode_1_missing                                            │               │               │               │         │
+   │  ├─ BenchConfig { f: 1, data_size: 262144 }    327.8 µs      │ 562.7 µs      │ 334.3 µs      │ 339.3 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 1, data_size: 524288 }    429.9 µs      │ 1.37 ms       │ 447.1 µs      │ 465.6 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 1, data_size: 1048576 }   834.9 µs      │ 2.447 ms      │ 916.9 µs      │ 1.064 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 2, data_size: 262144 }    367.5 µs      │ 1.718 ms      │ 383.3 µs      │ 405.9 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 2, data_size: 524288 }    486.8 µs      │ 656.2 µs      │ 527.1 µs      │ 535.3 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 2, data_size: 1048576 }   711.2 µs      │ 1.014 ms      │ 738.1 µs      │ 754.2 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 3, data_size: 262144 }    431.3 µs      │ 2.136 ms      │ 459.7 µs      │ 486.8 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 3, data_size: 524288 }    619.1 µs      │ 1.129 ms      │ 638.2 µs      │ 686 µs        │ 100     │ 100
+   │  ├─ BenchConfig { f: 3, data_size: 1048576 }   1.107 ms      │ 3.379 ms      │ 1.269 ms      │ 1.399 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 5, data_size: 262144 }    517.1 µs      │ 640.7 µs      │ 530.2 µs      │ 540.9 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 5, data_size: 524288 }    772.8 µs      │ 1.672 ms      │ 789.5 µs      │ 811.5 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 5, data_size: 1048576 }   1.423 ms      │ 4.388 ms      │ 1.6 ms        │ 1.735 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 10, data_size: 262144 }   555.2 µs      │ 1.273 ms      │ 573.3 µs      │ 603.1 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 10, data_size: 524288 }   817.6 µs      │ 1.044 ms      │ 844.2 µs      │ 856.5 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 10, data_size: 1048576 }  1.587 ms      │ 5.702 ms      │ 1.739 ms      │ 1.925 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 20, data_size: 262144 }   566.9 µs      │ 838.1 µs      │ 585.7 µs      │ 599.6 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 20, data_size: 524288 }   942.2 µs      │ 3.627 ms      │ 1.008 ms      │ 1.09 ms       │ 100     │ 100
+   │  ├─ BenchConfig { f: 20, data_size: 1048576 }  1.702 ms      │ 6.329 ms      │ 1.896 ms      │ 2.019 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 33, data_size: 262144 }   710.5 µs      │ 1.125 ms      │ 730 µs        │ 744.6 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 33, data_size: 524288 }   1.144 ms      │ 3.508 ms      │ 1.24 ms       │ 1.302 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 33, data_size: 1048576 }  2.212 ms      │ 6.226 ms      │ 2.453 ms      │ 2.604 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 66, data_size: 262144 }   754 µs        │ 909.7 µs      │ 776.7 µs      │ 786.9 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 66, data_size: 524288 }   1.182 ms      │ 3.556 ms      │ 1.376 ms      │ 1.466 ms      │ 100     │ 100
+   │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  2.475 ms      │ 5.66 ms       │ 2.815 ms      │ 2.988 ms      │ 100     │ 100
+   ├─ decode_2f_missing                                           │               │               │               │         │
+   │  ├─ BenchConfig { f: 1, data_size: 262144 }    334.9 µs      │ 421.3 µs      │ 339.8 µs      │ 343.7 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 1, data_size: 524288 }    427.8 µs      │ 525.9 µs      │ 435.1 µs      │ 438.8 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 1, data_size: 1048576 }   1.068 ms      │ 1.962 ms      │ 1.097 ms      │ 1.16 ms       │ 100     │ 100
+   │  ├─ BenchConfig { f: 2, data_size: 262144 }    367.2 µs      │ 2.001 ms      │ 418.9 µs      │ 435.7 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 2, data_size: 524288 }    502.3 µs      │ 598.6 µs      │ 518 µs        │ 521.2 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 2, data_size: 1048576 }   784.2 µs      │ 1.452 ms      │ 809.3 µs      │ 829.1 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 3, data_size: 262144 }    440.2 µs      │ 2.034 ms      │ 569.2 µs      │ 613.1 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 3, data_size: 524288 }    681.4 µs      │ 1.379 ms      │ 822.5 µs      │ 856.1 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 3, data_size: 1048576 }   1.193 ms      │ 3.671 ms      │ 1.392 ms      │ 1.476 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 5, data_size: 262144 }    495.7 µs      │ 627.6 µs      │ 509.5 µs      │ 513.7 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 5, data_size: 524288 }    798.2 µs      │ 2.389 ms      │ 832 µs        │ 868.7 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 5, data_size: 1048576 }   1.52 ms       │ 5.022 ms      │ 1.651 ms      │ 1.814 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 10, data_size: 262144 }   548.1 µs      │ 646.4 µs      │ 556.1 µs      │ 562.6 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 10, data_size: 524288 }   830.4 µs      │ 1.814 ms      │ 859.1 µs      │ 875.7 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 10, data_size: 1048576 }  1.556 ms      │ 5.791 ms      │ 1.79 ms       │ 1.961 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 20, data_size: 262144 }   588.7 µs      │ 718.7 µs      │ 598.8 µs      │ 612.9 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 20, data_size: 524288 }   970.8 µs      │ 2.781 ms      │ 1.094 ms      │ 1.138 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 20, data_size: 1048576 }  1.867 ms      │ 5.63 ms       │ 2.017 ms      │ 2.158 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 33, data_size: 262144 }   699.7 µs      │ 1.74 ms       │ 745 µs        │ 776.9 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 33, data_size: 524288 }   1.166 ms      │ 4.438 ms      │ 1.304 ms      │ 1.392 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 33, data_size: 1048576 }  2.344 ms      │ 4.608 ms      │ 2.557 ms      │ 2.693 ms      │ 100     │ 100
+   │  ├─ BenchConfig { f: 66, data_size: 262144 }   782.4 µs      │ 2.374 ms      │ 820.7 µs      │ 842.7 µs      │ 100     │ 100
+   │  ├─ BenchConfig { f: 66, data_size: 524288 }   1.251 ms      │ 3.991 ms      │ 1.321 ms      │ 1.42 ms       │ 100     │ 100
+   │  ╰─ BenchConfig { f: 66, data_size: 1048576 }  2.501 ms      │ 7.044 ms      │ 2.754 ms      │ 2.976 ms      │ 100     │ 100
+   ╰─ decode_f_missing                                            │               │               │               │         │
+      ├─ BenchConfig { f: 1, data_size: 262144 }    330.3 µs      │ 444.6 µs      │ 340.9 µs      │ 350.3 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 1, data_size: 524288 }    419 µs        │ 591.5 µs      │ 455.4 µs      │ 459.5 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 1, data_size: 1048576 }   821 µs        │ 1.948 ms      │ 851 µs        │ 907.8 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 2, data_size: 262144 }    360.7 µs      │ 1.917 ms      │ 365.9 µs      │ 391.7 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 2, data_size: 524288 }    502.6 µs      │ 739.8 µs      │ 528.1 µs      │ 548.9 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 2, data_size: 1048576 }   771.5 µs      │ 1.268 ms      │ 790 µs        │ 812.4 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 3, data_size: 262144 }    434 µs        │ 1.441 ms      │ 451.9 µs      │ 474.7 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 3, data_size: 524288 }    621 µs        │ 962 µs        │ 636.4 µs      │ 642.1 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 3, data_size: 1048576 }   1.101 ms      │ 2.836 ms      │ 1.301 ms      │ 1.389 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 5, data_size: 262144 }    508.2 µs      │ 623.4 µs      │ 527 µs        │ 532.7 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 5, data_size: 524288 }    786.8 µs      │ 2.04 ms       │ 887.3 µs      │ 951.3 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 5, data_size: 1048576 }   1.436 ms      │ 5.132 ms      │ 1.673 ms      │ 1.888 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 10, data_size: 262144 }   542.9 µs      │ 1.018 ms      │ 606.9 µs      │ 638.3 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 10, data_size: 524288 }   862.3 µs      │ 3.48 ms       │ 1.041 ms      │ 1.123 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 10, data_size: 1048576 }  1.604 ms      │ 4.099 ms      │ 1.804 ms      │ 1.872 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 20, data_size: 262144 }   575.6 µs      │ 898.2 µs      │ 599.7 µs      │ 606.4 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 20, data_size: 524288 }   992.7 µs      │ 2.338 ms      │ 1.129 ms      │ 1.188 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 20, data_size: 1048576 }  1.745 ms      │ 6.02 ms       │ 1.98 ms       │ 2.171 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 33, data_size: 262144 }   715.4 µs      │ 841.5 µs      │ 732.7 µs      │ 737.7 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 33, data_size: 524288 }   1.197 ms      │ 3.311 ms      │ 1.296 ms      │ 1.385 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 33, data_size: 1048576 }  2.223 ms      │ 5.376 ms      │ 2.487 ms      │ 2.653 ms      │ 100     │ 100
+      ├─ BenchConfig { f: 66, data_size: 262144 }   795.6 µs      │ 1.405 ms      │ 812.7 µs      │ 830.4 µs      │ 100     │ 100
+      ├─ BenchConfig { f: 66, data_size: 524288 }   1.245 ms      │ 4.166 ms      │ 1.303 ms      │ 1.39 ms       │ 100     │ 100
+      ╰─ BenchConfig { f: 66, data_size: 1048576 }  2.474 ms      │ 5.681 ms      │ 2.636 ms      │ 2.82 ms       │ 100     │ 100
+

@@ -83,6 +83,55 @@ mod verify_novelpoly {
 }
 
 // ============================================================================
+// reed-solomon-16 benchmarks
+// ============================================================================
+
+#[divan::bench_group(name = "verify_rs16")]
+mod verify_rs16 {
+    use super::*;
+
+    fn bench_config(bencher: Bencher, config: BenchConfig) {
+        let data = generate_data(config.data_size);
+        let shard_bytes = config.shard_size(); // Use aligned size for rs16
+
+        // Split data into shards
+        let mut original_shards = Vec::new();
+        for i in 0..config.data_shards() {
+            let start = i * config.shard_size();
+            let end = std::cmp::min(start + config.shard_size(), data.len());
+            let mut shard = data[start..end].to_vec();
+            shard.resize(shard_bytes, 0);
+            original_shards.push(shard);
+        }
+
+        // Encode data
+        let recovery = reed_solomon_16::encode(
+            config.data_shards(),
+            config.coding_shards(),
+            &original_shards,
+        )
+        .unwrap();
+
+        bencher.bench_local(|| {
+            // Verify by re-encoding and comparing
+            let verify_recovery = reed_solomon_16::encode(
+                config.data_shards(),
+                config.coding_shards(),
+                &original_shards,
+            )
+            .unwrap();
+            let is_valid = verify_recovery == recovery;
+            black_box(is_valid);
+        });
+    }
+
+    #[divan::bench(args = all_configs())]
+    fn verify(bencher: Bencher, config: BenchConfig) {
+        bench_config(bencher, config);
+    }
+}
+
+// ============================================================================
 // reed-solomon-simd benchmarks
 // ============================================================================
 
@@ -92,7 +141,7 @@ mod verify_simd {
 
     fn bench_config(bencher: Bencher, config: BenchConfig) {
         let data = generate_data(config.data_size);
-        let shard_bytes = config.shard_size();
+        let shard_bytes = config.shard_size(); // Use aligned size for simd
 
         // Encode data
         let recovery = reed_solomon_simd::encode(
@@ -105,8 +154,8 @@ mod verify_simd {
         // Split data into shards
         let mut original_shards = Vec::new();
         for i in 0..config.data_shards() {
-            let start = i * shard_bytes;
-            let end = std::cmp::min(start + shard_bytes, data.len());
+            let start = i * config.shard_size();
+            let end = std::cmp::min(start + config.shard_size(), data.len());
             let mut shard = data[start..end].to_vec();
             shard.resize(shard_bytes, 0);
             original_shards.push(shard);

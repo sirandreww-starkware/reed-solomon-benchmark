@@ -78,7 +78,6 @@ mod decode_erasure {
     }
 }
 
-
 #[divan::bench_group(name = "decode_novelpoly")]
 mod decode_novelpoly {
     use super::*;
@@ -144,13 +143,13 @@ mod decode_rs16 {
 
     fn bench_config(bencher: Bencher, config: BenchConfig, missing_count: usize) {
         let data = generate_data(config.data_size);
-        let shard_bytes = config.shard_size();
+        let shard_bytes = config.shard_size(); // Use aligned size for rs16
 
         // Split data into shards
         let mut original_shards = Vec::new();
         for i in 0..config.data_shards() {
-            let start = i * shard_bytes;
-            let end = std::cmp::min(start + shard_bytes, data.len());
+            let start = i * config.shard_size();
+            let end = std::cmp::min(start + config.shard_size(), data.len());
             let mut shard = data[start..end].to_vec();
             shard.resize(shard_bytes, 0);
             original_shards.push(shard);
@@ -215,13 +214,13 @@ mod decode_simd {
 
     fn bench_config(bencher: Bencher, config: BenchConfig, missing_count: usize) {
         let data = generate_data(config.data_size);
-        let shard_bytes = config.shard_size();
+        let shard_bytes = config.shard_size(); // Use aligned size for simd
 
         // Split data into shards
         let mut original_shards = Vec::new();
         for i in 0..config.data_shards() {
-            let start = i * shard_bytes;
-            let end = std::cmp::min(start + shard_bytes, data.len());
+            let start = i * config.shard_size();
+            let end = std::cmp::min(start + config.shard_size(), data.len());
             let mut shard = data[start..end].to_vec();
             shard.resize(shard_bytes, 0);
             original_shards.push(shard);

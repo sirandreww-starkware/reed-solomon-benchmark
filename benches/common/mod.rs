@@ -28,27 +28,30 @@ impl BenchConfig {
     }
 
     pub fn shard_size(&self) -> usize {
-        (self.data_size + self.f - 1) / self.f
+        let size: usize = (self.data_size + self.f - 1) / self.f;
+        // Round up to nearest multiple of 64
+        ((size + 63) / 64) * 64
     }
 }
 
 /// All F values to test
-pub const F_VALUES: &[usize] = &[1, 2, 3, 4, 5, 10, 20, 30, 33, 66, 99];
+pub const F_VALUES: &[usize] = &[1, 2, 3, 5, 10, 20, 33, 66];
 
 /// All data sizes to test (in bytes)
 pub const DATA_SIZES: &[usize] = &[
-    // 1024,              // 1KB
-    4 * 1024,        // 4KB
-    16 * 1024,       // 16KB
-    64 * 1024,       // 64KB
-    256 * 1024,      // 256KB
-    512 * 1024,      // 512KB
-    1024 * 1024,     // 1MB
-    2 * 1024 * 1024, // 2MB
-    4 * 1024 * 1024, // 4MB
-                     // 16 * 1024 * 1024,  // 16MB
-                     // 64 * 1024 * 1024,  // 64MB
-                     // 100 * 1024 * 1024, // 100MB
+    256 * 1024, // 256KB
+    512 * 1024, // 512KB
+    1024 * 1024, // 1MB
+
+                // 1024,              // 1KB
+                // 4 * 1024,        // 4KB
+                // 16 * 1024,       // 16KB
+                // 64 * 1024,       // 64KB
+                // 2 * 1024 * 1024, // 2MB
+                // 4 * 1024 * 1024, // 4MB
+                // 16 * 1024 * 1024,  // 16MB
+                // 64 * 1024 * 1024,  // 64MB
+                // 100 * 1024 * 1024, // 100MB
 ];
 
 /// Generate test data of specified size
