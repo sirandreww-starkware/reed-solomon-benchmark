@@ -1,6 +1,24 @@
 [package]
 name = "reed-solomon-benchmark"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
+reed-solomon-erasure = "6.0"
+reed-solomon-novelpoly = "2.0"
+reed-solomon-16 = "0.1"
+
+[dev-dependencies]
+divan = "0.1"
+
+[[bench]]
+name = "encode"
+harness = false
+
+[[bench]]
+name = "decode"
+harness = false
+
+[[bench]]
+name = "verify"
+harness = false
