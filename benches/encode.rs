@@ -116,3 +116,41 @@ mod encode_rs16 {
         bench_config(bencher, config);
     }
 }
+
+// ============================================================================
+// reed-solomon-simd benchmarks
+// ============================================================================
+
+#[divan::bench_group(name = "encode_simd")]
+mod encode_simd {
+    use super::*;
+    use reed_solomon_simd::ReedSolomonEncoder;
+
+    fn bench_config(bencher: Bencher, config: BenchConfig) {
+        let data = generate_data(config.data_size);
+        let shard_bytes = config.shard_size();
+
+        bencher.bench_local(|| {
+            let mut encoder =
+                ReedSolomonEncoder::new(config.data_shards(), config.coding_shards(), shard_bytes)
+                    .unwrap();
+
+            // Add data shards
+            for i in 0..config.data_shards() {
+                let start = i * shard_bytes;
+                let end = std::cmp::min(start + shard_bytes, data.len());
+                let mut shard = data[start..end].to_vec();
+                shard.resize(shard_bytes, 0);
+                encoder.add_original_shard(&shard).unwrap();
+            }
+
+            let result = encoder.encode().unwrap();
+            black_box(result);
+        });
+    }
+
+    #[divan::bench(args = all_configs())]
+    fn encode(bencher: Bencher, config: BenchConfig) {
+        bench_config(bencher, config);
+    }
+}

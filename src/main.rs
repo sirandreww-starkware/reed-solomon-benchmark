@@ -43,4 +43,19 @@ mod tests {
         let _parity = encoder.encode().unwrap();
         println!("reed-solomon-16 encode works");
     }
+
+    #[test]
+    fn test_reed_solomon_simd() {
+        use reed_solomon_simd::ReedSolomonEncoder;
+
+        let shard_bytes = 64; // Minimum shard size
+        let mut encoder = ReedSolomonEncoder::new(3, 2, shard_bytes).unwrap();
+
+        encoder.add_original_shard(&vec![1u8; shard_bytes]).unwrap();
+        encoder.add_original_shard(&vec![2u8; shard_bytes]).unwrap();
+        encoder.add_original_shard(&vec![3u8; shard_bytes]).unwrap();
+
+        let _parity = encoder.encode().unwrap();
+        println!("reed-solomon-simd encode works");
+    }
 }

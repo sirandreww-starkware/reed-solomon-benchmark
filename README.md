@@ -7,6 +7,7 @@ A comprehensive benchmark comparing the performance of popular Rust Reed-Solomon
 - **reed-solomon-erasure** (v6.0) - Most widely used, mature implementation
 - **reed-solomon-novelpoly** (v2.0) - Performance-focused with novel polynomial basis
 - **reed-solomon-16** (v0.1) - Optimized for 16-bit operations
+- **reed-solomon-simd** (v3.1) - SIMD-optimized implementation with O(n log n) complexity
 
 ## Test Configuration
 
@@ -139,6 +140,11 @@ Divan outputs detailed statistics for each benchmark:
 - Uses 16-bit operations instead of 8-bit
 - May be faster on certain architectures
 - Different memory characteristics
+
+**reed-solomon-simd**:
+- Leverages SIMD instructions (SSE, AVX2, NEON)
+- O(n log n) complexity using FFT-based algorithms
+- Excellent for large-scale erasure coding
 
 ## Hardware Specifications
 

@@ -51,7 +51,7 @@ mod verify_erasure {
 }
 
 // ============================================================================
-// reed-solomon-novelpoly benchmarks
+// reed-solomon-simd benchmarks
 // ============================================================================
 
 #[divan::bench_group(name = "verify_novelpoly")]
@@ -83,11 +83,11 @@ mod verify_novelpoly {
 }
 
 // ============================================================================
-// reed-solomon-16 benchmarks
+// reed-solomon-simd benchmarks
 // ============================================================================
 
-#[divan::bench_group(name = "verify_rs16")]
-mod verify_rs16 {
+#[divan::bench_group(name = "verify_simd")]
+mod verify_simd {
     use super::*;
 
     fn bench_config(bencher: Bencher, config: BenchConfig) {
@@ -95,7 +95,7 @@ mod verify_rs16 {
         let shard_bytes = config.shard_size();
 
         // Encode data
-        let recovery = reed_solomon_16::encode(
+        let recovery = reed_solomon_simd::encode(
             config.data_shards(),
             config.coding_shards(),
             &vec![data.clone()],
@@ -114,7 +114,7 @@ mod verify_rs16 {
 
         bencher.bench_local(|| {
             // Verify by re-encoding and comparing
-            let verify_recovery = reed_solomon_16::encode(
+            let verify_recovery = reed_solomon_simd::encode(
                 config.data_shards(),
                 config.coding_shards(),
                 &vec![data.clone()],

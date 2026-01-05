@@ -78,9 +78,6 @@ mod decode_erasure {
     }
 }
 
-// ============================================================================
-// reed-solomon-novelpoly benchmarks
-// ============================================================================
 
 #[divan::bench_group(name = "decode_novelpoly")]
 mod decode_novelpoly {
@@ -161,6 +158,77 @@ mod decode_rs16 {
 
         // Encode data
         let recovery = reed_solomon_16::encode(
+            config.data_shards(),
+            config.coding_shards(),
+            &original_shards,
+        )
+        .unwrap();
+
+        let recovery_provided_count = missing_count;
+
+        bencher.bench_local(|| {
+            let mut decoder =
+                ReedSolomonDecoder::new(config.data_shards(), config.coding_shards(), shard_bytes)
+                    .unwrap();
+
+            // Add available original shards
+            for index in missing_count..config.data_shards() {
+                decoder
+                    .add_original_shard(index, &original_shards[index])
+                    .unwrap();
+            }
+
+            // Add recovery shards to compensate for missing originals
+            for index in 0..recovery_provided_count {
+                decoder.add_recovery_shard(index, &recovery[index]).unwrap();
+            }
+
+            let result = decoder.decode().unwrap();
+            black_box(result);
+        });
+    }
+
+    #[divan::bench(args = all_configs())]
+    fn decode_1_missing(bencher: Bencher, config: BenchConfig) {
+        bench_config(bencher, config, 1);
+    }
+
+    #[divan::bench(args = all_configs())]
+    fn decode_f_missing(bencher: Bencher, config: BenchConfig) {
+        bench_config(bencher, config, config.f);
+    }
+
+    #[divan::bench(args = all_configs())]
+    fn decode_2f_missing(bencher: Bencher, config: BenchConfig) {
+        bench_config(bencher, config, 2 * config.f);
+    }
+}
+
+// ============================================================================
+// reed-solomon-simd benchmarks
+// ============================================================================
+
+#[divan::bench_group(name = "decode_simd")]
+mod decode_simd {
+    use super::*;
+    use reed_solomon_simd::ReedSolomonDecoder;
+
+    fn bench_config(bencher: Bencher, config: BenchConfig, missing_count: usize) {
+        let data = generate_data(config.data_size);
+        let shard_bytes = config.shard_size();
+
+        // Split data into shards
+        let mut original_shards = Vec::new();
+        for i in 0..config.data_shards() {
+            let start = i * shard_bytes;
+            let end = std::cmp::min(start + shard_bytes, data.len());
+            let mut shard = data[start..end].to_vec();
+            shard.resize(shard_bytes, 0);
+            original_shards.push(shard);
+        }
+
+        // Encode data
+        let recovery = reed_solomon_simd::encode(
             config.data_shards(),
             config.coding_shards(),
             &original_shards,
